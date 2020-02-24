@@ -4,7 +4,11 @@
 
 Your task is to create document locker that stores important documents such as a drivers license and passport for users.
 
-![MyPass Document Locker](https://i.imgur.com/y6d1Qsi.png)
+Here is an example of what it should look like:
+
+<img src="/docs/image.png" align="middle" width="900" >
+
+<img src="/docs/2.gif" align="middle" width="900" >
 
 Note: You don't have to make it look pixel perfect to this image (but you can if you want). Use your own creativity and expertise.
 
@@ -28,7 +32,7 @@ This will return the user's information including accountId, name, and profile i
 
 #### GET - /api/account/{accountId}/documents/
 
-This will return an accounts document urls, document types, and if the document has shared users. Note: You much replace {accountId} with an actual accountId returned by the login response.
+This will return an accounts document urls, document types, and if the document has shared users. Note: You should replace {accountId} with an actual accountId returned by the login response.
 
 #### GET - /api/documenttypes/
 
