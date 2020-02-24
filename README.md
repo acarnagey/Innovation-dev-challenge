@@ -8,8 +8,6 @@ Here is an example of what it should look like:
 
 <img src="/docs/image.png" align="middle" width="900" >
 
-<img src="/docs/2.gif" align="middle" width="900" >
-
 Note: You don't have to make it look pixel perfect to this image (but you can if you want). Use your own creativity and expertise.
 
 Here's example user stories that may help guide what you develop:
