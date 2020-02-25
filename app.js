@@ -1,12 +1,16 @@
 const express = require("express");
 let bodyParser = require("body-parser");
 let cors = require("cors");
+const path = require("path");
 
 const app = express();
 const port = 3000;
+const DIST_DIR = path.join(__dirname, 'dist');
+const HTML_FILE = path.join(DIST_DIR, 'index.html');
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(DIST_DIR));
 
 const user = {
   profileimgUrl: "https://i.imgur.com/PzWBXxZ.png",
@@ -21,6 +25,10 @@ const shareUser = {
   lastName: "Bob",
   accountId: "123420"
 };
+
+app.get('/', (req, res) => {
+  res.sendFile(HTML_FILE);
+});
 
 app.post("/api/login/", (req, res) => {
   console.log(req.body.email);
