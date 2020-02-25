@@ -33,6 +33,7 @@ class LoginPage extends Component {
             const loginResponse = await AgentService.login({ email, password } );
             console.log(JSON.stringify(loginResponse));
             handleLogin(loginResponse);
+            return;
         } catch (err) {
             if (err && err.error && err.error.message) {
                 errorMessage = err.error.message;

@@ -6,9 +6,19 @@ class App extends Component {
     constructor(props) {
         super(props);
 
+        // TODO switch back when ready
+        // this.state = {
+        //     isLoggedIn: false,
+        //     account: null
+        // };
         this.state = {
-            isLoggedIn: false,
-            account: null
+            isLoggedIn: true,
+            account: {
+                "profileimgUrl": "https://i.imgur.com/PzWBXxZ.png",
+                "firstName": "Sally",
+                "lastName": "Sue",
+                "accountId": "420123"
+            }
         };
 
         this.handleLogin = this.handleLogin.bind(this);
@@ -27,7 +37,6 @@ class App extends Component {
         const { isLoggedIn, account } = { ...this.state };
         return (
             <div>
-                The App
                 { isLoggedIn && <HomePage account={account} /> }
                 { !isLoggedIn && <LoginPage handleLogin={this.handleLogin} /> }
             </div>

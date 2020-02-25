@@ -45,6 +45,14 @@ class AgentService {
     static async login(loginRequest) {
         return (await this.post('/login', loginRequest));
     }
+
+    static async getDocuments(accountId) {
+        return (await this.get(`/account/${accountId}/documents`));
+    }
+
+    static async getDocumentTypes() {
+        return (await this.get('/documenttypes'));
+    }
 }
 
 export default AgentService;

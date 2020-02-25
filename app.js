@@ -59,12 +59,12 @@ app.get("/api/account/:accountId/documents/", (req, res) => {
         {
           type: "Passport",
           url: "https://i.imgur.com/rENTlwc.png",
-          sharedWith: []
+          sharedWith: [shareUser, shareUser]
         },
         {
           type: "Birth Certificate",
           url: "https://i.imgur.com/6OsFLjf.png",
-          sharedWith: []
+          sharedWith: [shareUser, shareUser, shareUser]
         }
       ]
     });
