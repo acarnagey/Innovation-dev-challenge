@@ -1,4 +1,4 @@
-// const API_ENDPOINT = 'http://192.168.86.20:3000/api';
+// const API_ENDPOINT = 'http://localhost:3000/api';
 const API_ENDPOINT = 'http://54.245.189.252:3000/api';
 
 class AgentService {
