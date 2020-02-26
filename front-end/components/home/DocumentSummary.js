@@ -4,8 +4,8 @@ import HomePage from './HomePage';
 
 class DocumentSummary extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
     }
 
     renderFirstShare(sharedWithList) {
@@ -39,7 +39,7 @@ class DocumentSummary extends Component {
         }
         if(sharedWithList.length > 2) {
             return (
-                <div className="shared-with-other">+{sharedWithList.length--}</div>
+                <div className="shared-with-other">+{sharedWithList.length - 1}</div>
             )
         }
         return (

@@ -47,31 +47,39 @@ class HomePage extends Component {
                 <Row id="home-search">
                     <Col style={{display: 'flex'}}>
                         <input className="search" type="search" placeholder="Search..." />
-                        <Button color="primary">primary</Button>
+                        <Button color="primary">Search</Button>
                     </Col>
                 </Row>
                 <div id="home-profile">
                     <img className="account-profile-image" src={account.profileimgUrl} />
                 </div>
             </div>
-            { !documentSelected && (
-                <div>
-                    { documents.map((document, idx) => {
-                        return (
-                            <div
-                                key={idx}
-                                onClick={() => this.handleSelectDocument(document)}
-                                className="document-summary-container"
-                            >
-                                <DocumentSummary document={document} documentIdx={idx++} />
-                            </div>
-                        );
-                    })}
+            <div className="home-content">
+                <div className="home-side" />
+                <div className="home-main">
+                { !documentSelected && (
+                    <Row>
+                        { documents.map((document, idx) => {
+                            return (
+                                <Col
+                                    sm="12"
+                                    md="6"
+                                    lg="4"
+                                    key={idx}
+                                    onClick={() => this.handleSelectDocument(document)}
+                                    className="document-summary-container"
+                                >
+                                    <DocumentSummary document={document} documentIdx={idx++} />
+                                </Col>
+                            );
+                        })}
+                    </Row>
+                )}
+                { documentSelected && (
+                    <DocumentDetail document={documentSelected} goBack={this.goBack} />
+                )}
                 </div>
-            )}
-            { documentSelected && (
-              <DocumentDetail document={documentSelected} goBack={this.goBack} />
-            )}
+            </div>
         </div>
         );
     }
