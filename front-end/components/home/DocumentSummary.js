@@ -23,7 +23,7 @@ class DocumentSummary extends Component {
             )
         }
         return (
-            <Fragment/>
+            <div className="shared-with-other">0</div>
         )
     }
 
@@ -55,9 +55,9 @@ class DocumentSummary extends Component {
                     src={document.url}
                     alt={`document${documentIdx}`}
                 />
-                <div>{document.type}</div>
-                <div>SHARED WITH</div>
-                <div className="shared-with-container">
+                <div className="title padding-top-12">{document.type}</div>
+                <div className="subtitle">SHARED WITH</div>
+                <div className="shared-with-container padding-top-12">
                     { this.renderFirstShare(document.sharedWith) }
                     { this.renderOtherShare(document.sharedWith) }
                     <div className="separator" />

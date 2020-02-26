@@ -23,8 +23,8 @@ class AddNewDocument extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <img style={{width: '165px', height: '205px', display: 'block', margin: 'auto'}} src={`${window.location.origin}/${folderImage}`} alt="Add New"/>
-                <div className="document-title">Add New</div>
-                <div className="subtitle">NOT UPLOADED</div>
+                <div className="document-title padding-top-12">Add New</div>
+                <div className="subtitle padding-bottom-12">NOT UPLOADED</div>
                 <Button color="secondary" type="submit">Upload</Button>
             </form>
         )

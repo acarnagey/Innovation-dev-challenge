@@ -11,7 +11,7 @@ class Profile extends Component {
         const { account, goBack } = { ...this.props };
 
         return (
-            <div style={{paddingBottom: '24px'}}>
+            <div className="main-content">
                 <Breadcrumb>
                     <BreadcrumbItem className="breadcrumb-link" onClick={goBack}>My Documents</BreadcrumbItem>
                     <BreadcrumbItem active>Profile</BreadcrumbItem>

@@ -29,3 +29,36 @@ body {
     text-decoration: underline;
   }
 }
+
+.big-title {
+  font-size: 28px;
+  color: #666;
+  font-weight: bolder;
+}
+
+.title {
+  color: #666;
+  font-weight: bolder;
+}
+
+.subtitle {
+  color: #ccc;
+  font-weight: bolder;
+}
+
+.padding-top-12 {
+  padding-top: 12px;
+}
+
+.padding-bottom-12 {
+  padding-bottom: 12px;
+}
+
+.document-add-new {
+  text-align: center;
+  padding: 24px;
+}
+
+.main-content {
+  padding: 24px;
+}

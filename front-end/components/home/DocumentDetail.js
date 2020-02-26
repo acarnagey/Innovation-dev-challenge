@@ -11,8 +11,8 @@ class DocumentDetail extends Component {
     render() {
         const { document, goBack } = { ...this.props };
         return (
-            <div style={{paddingBottom: '24px'}}>
-                <Breadcrumb>
+            <div className="main-content">
+                <Breadcrumb className="padding-bottom-12">
                     <BreadcrumbItem className="breadcrumb-link" onClick={goBack}>My Documents</BreadcrumbItem>
                     <BreadcrumbItem active>Driver's License</BreadcrumbItem>
                 </Breadcrumb>
@@ -20,8 +20,11 @@ class DocumentDetail extends Component {
                      src={document.url}
                      alt="document"
                 />
-                <div>{document.type}</div>
-                <div>SHARED WITH</div>
+                <div className="title padding-top-12">{document.type}</div>
+                <div className="subtitle padding-bottom-12">SHARED WITH</div>
+                { document.sharedWith.length < 1 && (
+                    <div>No documents are being shared.</div>
+                )}
                 <ListGroup>
                 { document.sharedWith.map((sharedWithItem, idx) => {
                     return (

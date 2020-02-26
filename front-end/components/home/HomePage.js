@@ -122,13 +122,10 @@ class HomePage extends Component {
         );
     }
 
-    render() {
+    renderTopBar() {
         const { account } = { ...this.props };
-        const { searchedDocuments, documentSelected, isProfile, sortAsc } = { ...this.state };
 
         return (
-        <div id="home-container">
-            { this.renderModal() }
             <div id="home-top-bar">
                 <div id="home-logo">
                     <img className="logo" src={`${window.location.origin}/${folderImage}`} alt="Logo" />
@@ -142,48 +139,89 @@ class HomePage extends Component {
                     <img className="account-profile-image" src={account.profileimgUrl} />
                 </div>
             </div>
-            <div className="home-content">
-                <div className="home-side" />
-                <div className="home-main">
-                { isProfile && (
-                    <Profile goBack={this.goBack} account={account} />
-                )}
-                { (!documentSelected && !isProfile) && (
-                    <div>
-                        <div className="title">My Documents</div>
-                        <div>Sort by <span style={{cursor: 'pointer'}} onClick={this.toggleSort}>NAME <Chevron isAscending={sortAsc} /></span></div>
-                        <Row>
-                            <Col
-                                sm="12"
-                                md="6"
-                                lg="4"
-                                className="document-summary-container"
-                            >
-                                <AddNewDocument handleAddNew={this.handleAddNew} />
-                            </Col>
-                            { searchedDocuments.map((document, idx) => {
-                                return (
-                                    <Col
-                                        sm="12"
-                                        md="6"
-                                        lg="4"
-                                        key={idx}
-                                        onClick={() => this.handleSelectDocument(document)}
-                                        className="document-summary-container"
-                                    >
-                                        <DocumentSummary document={document} documentIdx={idx++} />
-                                    </Col>
-                                );
-                            })}
-                        </Row>
+        );
+    }
+
+    renderProfile() {
+        const { account } = { ...this.props };
+        const { isProfile } = { ...this.state };
+
+        if(isProfile) {
+            return (
+                <Profile goBack={this.goBack} account={account} />
+            )
+        }
+        return (
+          <Fragment />
+        );
+    }
+
+    renderMyDocuments() {
+        const { searchedDocuments, documentSelected, isProfile, sortAsc } = { ...this.state };
+
+        if(!documentSelected && !isProfile) {
+            return (
+                <div className="main-content">
+                    <div className="big-title">My Documents</div>
+                    <div className="subtitle">Sort by <span style={{cursor: 'pointer'}} onClick={this.toggleSort}>NAME <Chevron isAscending={sortAsc} /></span></div>
+                    <Row>
+                        <Col
+                            sm="12"
+                            md="6"
+                            lg="4"
+                            className="document-add-new"
+                        >
+                            <AddNewDocument handleAddNew={this.handleAddNew} />
+                        </Col>
+                        { searchedDocuments.map((document, idx) => {
+                            return (
+                                <Col
+                                    sm="12"
+                                    md="6"
+                                    lg="4"
+                                    key={idx}
+                                    onClick={() => this.handleSelectDocument(document)}
+                                    className="document-summary-container"
+                                >
+                                    <DocumentSummary document={document} documentIdx={idx++} />
+                                </Col>
+                            );
+                        })}
+                    </Row>
+                </div>
+            )
+        }
+        return <Fragment/>
+    }
+
+    renderDocumentDetail() {
+        const { documentSelected } = { ...this.state };
+
+        if(documentSelected) {
+            return (
+                <DocumentDetail document={documentSelected} goBack={this.goBack} />
+            )
+        }
+
+        return (
+            <Fragment/>
+        );
+    }
+
+    render() {
+        return (
+            <div id="home-container">
+                { this.renderModal() }
+                { this.renderTopBar() }
+                <div className="home-content">
+                    <div className="home-side" />
+                    <div className="home-main">
+                        { this.renderProfile() }
+                        { this.renderMyDocuments() }
+                        { this.renderDocumentDetail() }
                     </div>
-                )}
-                { documentSelected && (
-                    <DocumentDetail document={documentSelected} goBack={this.goBack} />
-                )}
                 </div>
             </div>
-        </div>
         );
     }
 }
