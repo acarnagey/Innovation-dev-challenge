@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import {Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import {Breadcrumb, BreadcrumbItem, ListGroup, ListGroupItem} from 'reactstrap';
 
 class DocumentDetail extends Component {
 
@@ -11,7 +11,7 @@ class DocumentDetail extends Component {
     render() {
         const { document, goBack } = { ...this.props };
         return (
-            <div>
+            <div style={{paddingBottom: '24px'}}>
                 <Breadcrumb>
                     <BreadcrumbItem className="breadcrumb-link" onClick={goBack}>My Documents</BreadcrumbItem>
                     <BreadcrumbItem active>Driver's License</BreadcrumbItem>
@@ -22,16 +22,21 @@ class DocumentDetail extends Component {
                 />
                 <div>{document.type}</div>
                 <div>SHARED WITH</div>
+                <ListGroup>
                 { document.sharedWith.map((sharedWithItem, idx) => {
                     return (
-                        <div key={idx}>
-                            <img className="shared-with-image"
+                        <ListGroupItem key={idx} className="justify-content-between">
+                            <img className="shared-with-image-single"
                                  src={sharedWithItem.profileimgUrl}
                                  alt={`sharedWithItem${idx}`}
                             />
-                        </div>
+                            <div style={{marginLeft: '24px',display: 'inline-block'}}>
+                                {`${sharedWithItem.firstName} ${sharedWithItem.lastName}`}
+                            </div>
+                        </ListGroupItem>
                     )
                 }) }
+                </ListGroup>
             </div>
         )
     }

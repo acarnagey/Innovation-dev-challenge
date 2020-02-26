@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require('path');
 const htmlPlugin = new HtmlWebPackPlugin({
@@ -9,6 +10,19 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: "[name].js"
+    },
+    devServer: {
+        port: 3001,
+        disableHostCheck: true,
+        historyApiFallback: {
+            rewrites: [
+                { from: /^\/$/, to: '/index.html' },
+                { from: /^\/subpage/, to: '/index.html' },
+                { from: /./, to: '/index.html' }
+            ]
+        },
+        contentBase: path.resolve(__dirname, 'front-end'),
+        inline: true
     },
     plugins: [htmlPlugin],
     module: {

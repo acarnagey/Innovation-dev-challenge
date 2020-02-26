@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "webpack --mode development && node app.js",
-    "build": "webpack --mode production",
+    "dev": "npx webpack --mode development && node app.js",
+    "build": "npx webpack --mode production",
+    "fe-dev": "npx webpack-dev-server --mode=development --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -19,6 +20,7 @@
     "prop-types": "latest",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-dropzone": "^10.2.1",
     "reactstrap": "^8.4.1"
   },
   "devDependencies": {
@@ -35,6 +37,9 @@
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-hot-middleware": "^2.25.0"
   }
 }

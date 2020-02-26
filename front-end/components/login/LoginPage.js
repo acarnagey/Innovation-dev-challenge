@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import AgentService from '../api/AgentService'
+import AgentService from '../../api/AgentService';
+import {
+    Button,
+    Card,
+    CardBody, CardImg,
+    CardSubtitle,
+    CardText,
+    CardTitle,
+    Form,
+    FormFeedback,
+    FormGroup,
+    Input,
+    Label
+} from 'reactstrap';
+import folderImage from '../../img/folder.png';
 
 class LoginPage extends Component {
 
@@ -23,6 +37,7 @@ class LoginPage extends Component {
     }
 
     async handleLogin(e) {
+        console.log('test');
         e.preventDefault();
 
         const { handleLogin } = { ...this.props };
@@ -48,14 +63,39 @@ class LoginPage extends Component {
         const { username, password, errorMessage } = { ...this.state };
 
         return (
-            <div>
-                Login page
-                <form onSubmit={e => this.handleLogin(e)}>
-                    { errorMessage && <div className="error">{errorMessage}</div>}
-                    <input name="email" type="email" value={username} onChange={this.handleInputChange} />
-                    <input name="password" type="password" value={password} onChange={this.handleInputChange} />
-                    <input type="submit" />
-                </form>
+            <div style={{width: '320px', margin: 'auto'}}>
+                <Card style={{margin: '24px'}}>
+                    <CardBody>
+                        <img style={{display: 'inline-block', width: '60px', height: '60px', objectFit: 'contain'}} className="logo" src={`${window.location.origin}/${folderImage}`} alt="Logo" />
+                        <div style={{display: 'inline-block', fontSize: '24px', marginLeft: '24px'}}>MyPass</div>
+                        <div style={{fontSize: '18px', borderBottom: '1px solid #ccc', marginBottom: '18px'}}>Login</div>
+                        {/*<CardTitle>MyPass</CardTitle>*/}
+                        {/*<CardSubtitle>Login</CardSubtitle>*/}
+                        {/*<CardText>*/}
+                            <Form onSubmit={this.handleLogin}>
+                                { errorMessage && <div className="error">{errorMessage}</div>}
+                                <FormGroup>
+                                    <Label for="email">Email</Label>
+                                    <Input type="email" name="email" id="email" value={username} onChange={this.handleInputChange} placeholder="Email" />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="password">Password</Label>
+                                    <Input type="password" name="password" id="password" value={password} onChange={this.handleInputChange} placeholder="Password" />
+                                </FormGroup>
+                                <Button type="submit">Login</Button>
+                            </Form>
+                        {/*</CardText>*/}
+                    </CardBody>
+                </Card>
+                {/*<div>*/}
+                {/*    Login page*/}
+                {/*    <form onSubmit={e => this.handleLogin(e)}>*/}
+
+                {/*        <input name="email" type="email" value={username} onChange={this.handleInputChange} />*/}
+                {/*        <input name="password" type="password" value={password} onChange={this.handleInputChange} />*/}
+                {/*        <input type="submit" />*/}
+                {/*    </form>*/}
+                {/*</div>*/}
             </div>
         )
     }

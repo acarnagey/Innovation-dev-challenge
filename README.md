@@ -1,3 +1,11 @@
+To run front-end portion
+
+> npm install
+
+> npm run build
+
+> node app.js
+
 # Frontend Challenge
 
 ### Challenge
